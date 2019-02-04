@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,12 +10,14 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [ForeignKey("SecurityLogin")]
         public Guid Login { get; set; }
         [Column("Current_Salary")]
         public Decimal? CurrentSalary { get; set; }
         [Column("Current_Rate")]
         public Decimal? CurrentRate { get; set; }
         public string Currency { get; set; }
+        [ForeignKey("SystemCountryCode")]
         [Column("Country_Code")]
         public string Country { get; set; }
         [Column("State_Province_Code")]
@@ -27,6 +30,13 @@ namespace CareerCloud.Pocos
         public string PostalCode { get; set; }
         [Column("Time_Stamp")]
         public byte[] TimeStamp { get; set; }
+        public virtual SystemCountryCodePoco SystemCountryCode { get; set; }
+        public virtual SecurityLoginPoco SecurityLogin { get; set; }
+        public virtual ICollection<ApplicantResumePoco> ApplicantResume { get; set; }
+        public virtual ICollection<ApplicantEducationPoco>ApplicantEducation { get; set; }
+        public virtual ICollection<ApplicantJobApplicationPoco>ApplicantJobApplication { get; set; }
+        public virtual ICollection<ApplicantWorkHistoryPoco>ApplicantWorkHistory { get; set; }
+        public virtual ICollection<ApplicantSkillPoco>ApplicantSkill { get; set; }
 
     }
 }

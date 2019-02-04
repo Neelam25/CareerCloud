@@ -10,6 +10,7 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [ForeignKey("ApplicantProfile")]
         public Guid Applicant { get; set; }
         public string Skill { get; set; }
         [Column("Skill_Level")]
@@ -24,5 +25,6 @@ namespace CareerCloud.Pocos
         public int EndYear { get; set; }
         [Column("Time_Stamp")]
         public byte[] TimeStamp { get; set; }
+        public virtual ApplicantProfilePoco ApplicantProfile {get; set;}
     }
 }
