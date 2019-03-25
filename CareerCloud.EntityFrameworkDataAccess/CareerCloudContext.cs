@@ -12,9 +12,14 @@ using CareerCloud.Pocos;
 namespace CareerCloud.EntityFrameworkDataAccess
 {
    public class CareerCloudContext: DbContext {
-       public CareerCloudContext():base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
+        public CareerCloudContext(): this(false)
+        {
+                
+        }
+       public CareerCloudContext(bool createProxy=true):base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
        {
-           
+            Database.Log = l => System.Diagnostics.Debug.WriteLine(l);
+            Configuration.ProxyCreationEnabled = createProxy;
        }
         
        protected override void OnModelCreating(DbModelBuilder modelBuilder)

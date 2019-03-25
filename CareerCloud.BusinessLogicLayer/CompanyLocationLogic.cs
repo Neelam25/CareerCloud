@@ -14,6 +14,7 @@ namespace CareerCloud.BusinessLogicLayer
         {
 
         }
+
         public override void Add(CompanyLocationPoco[] pocos)
         {
             Verify(pocos);

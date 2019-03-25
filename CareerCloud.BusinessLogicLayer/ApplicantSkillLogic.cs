@@ -10,10 +10,14 @@ namespace CareerCloud.BusinessLogicLayer
 {
     public class ApplicantSkillLogic :BaseLogic<ApplicantSkillPoco>
     {
+       
+
         public ApplicantSkillLogic(IDataRepository<ApplicantSkillPoco> repository):base(repository)
         {
 
         }
+
+       
         public override void Add(ApplicantSkillPoco[] pocos)
         {
             Verify(pocos);
